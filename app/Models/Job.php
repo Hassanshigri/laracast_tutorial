@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model {
-    protected $table = 'job_lisktings';
-
-    protected $fillable = ['title', 'sallary'];
+class Job extends Model
+{
+    use HasFactory; 
+    protected $table = 'job_listings';
+    protected $fillable = ['title','sallary'];
 }
