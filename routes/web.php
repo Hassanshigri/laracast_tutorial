@@ -11,15 +11,18 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
+    // $jobs = Job::all();
+    $jobs = Job::with('employer')->get(); // eager loading to prevent n+1 problem
+
     return view('jobs', [
-     'jobs'=>Job::all()
+        'jobs' => $jobs
     ]);
 });
 
 
 Route::get('/jobs/{id}', function ($id) {
-  
-    $job = Job::find($id); 
+
+    $job = Job::find($id);
     return view('job', ['job' => $job]);
 });
 
